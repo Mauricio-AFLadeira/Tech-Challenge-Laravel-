@@ -20,28 +20,19 @@
             <hr />
         </div>
 
-        <form>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Owner</span>
-                <input id="owner" type="text" class="form-control" aria-label="Sizing example input">
-            </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Repository</span>
-                <input id="repo" type="text" class="form-control" aria-label="Sizing example input">
-            </div>
+        <input type="submit" id="send" class="btn btn-outline-success">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Branch</span>
-                <input id="sha" type="text" class="form-control" aria-label="Sizing example input">
-            </div>
+        <a href="{{route('graph')}}">graph</a>
 
-            <input type="submit" id="send" class="btn btn-outline-success">
-        </form>
-        <div id="result"></div>
+        <ul></ul>
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="/js/welcome.js"></script>
 </body>
 
 </html>

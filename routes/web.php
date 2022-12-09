@@ -35,3 +35,7 @@ Route::middleware([
 
 Route::get('/auth/github', [GitHubController::class, 'gitRedirect']);
 Route::get('/auth/github/callback', [GitHubController::class, 'gitCallback']);
+
+Route::get('/graph', function () {
+    return view('graph');
+})->name('graph');
