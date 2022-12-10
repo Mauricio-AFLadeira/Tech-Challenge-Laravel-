@@ -1,7 +1,17 @@
 const ul = document.querySelector('ul')
 
-function getApiGitHub() {
-    fetch('https://api.github.com/users/Mauricio-AFLadeira/repos')
+
+const btn = document.querySelector('#user')
+
+btn.addEventListener("click", function (e) {
+    e.preventDefault()
+    let userName = document.querySelector('#name').value
+    getApiGitHub(userName)
+
+})
+
+function getApiGitHub(userName) {
+    fetch('https://api.github.com/users/' + userName + '/repos')
         .then(async res => {
 
             if (!res.ok) {
@@ -16,6 +26,7 @@ function getApiGitHub() {
                 li.innerHTML = `
         <strong>${item.name.toUpperCase()}</strong>
         <span>URL: ${item.commits_url}</span>
+        <span>Sha: ${item.sha}</span>
         <span>Data Criação: 
           ${Intl.DateTimeFormat('pt-BR')
                         .format(new Date(item.created_at))}
@@ -27,5 +38,3 @@ function getApiGitHub() {
 
         }).catch(e => console.log(e))
 }
-
-getApiGitHub()

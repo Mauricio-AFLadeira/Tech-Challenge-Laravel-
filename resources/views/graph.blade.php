@@ -40,9 +40,13 @@
         </form>
         <div id="result"></div>
 
-        <ul></ul>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/app.js"></script>
 </body>
 

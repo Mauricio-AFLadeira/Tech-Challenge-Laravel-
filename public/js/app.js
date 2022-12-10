@@ -1,6 +1,7 @@
 const base_url = 'https://api.github.com';
 
 const btn = document.querySelector("#send")
+const ctx = document.getElementById('myChart');
 
 btn.addEventListener("click", function (e) {
     e.preventDefault()
@@ -9,8 +10,30 @@ btn.addEventListener("click", function (e) {
     let repo = document.querySelector("#repo").value
     let sha = document.querySelector("#sha").value
 
+    let count = get_all_commits_count('Mauricio-AFLadeira', 'Tech-Challenge-Laravel-', 'main')
+    // let count = get_all_commits_count(owner, repo, sha)
 
-    get_all_commits_count(owner, repo, sha)
+    console.log('Commit Count: ', count);
+    result.innerHTML = ("Commit count: " + count)
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['commits'],
+            datasets: [{
+                label: 'Commit count',
+                data: [count],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
 })
 
@@ -30,8 +53,6 @@ function get_all_commits_count(owner, repo, sha) {
     let compare_url = base_url + '/repos/' + owner + '/' + repo + '/compare/' + first_commit + '...' + sha;
     let commit_req = httpGet(compare_url);
     let commit_count = JSON.parse(commit_req)['total_commits'] + 1;
-    console.log('Commit Count: ', commit_count);
-    result.innerHTML = ("Commit count: " + commit_count)
     return commit_count
 }
 

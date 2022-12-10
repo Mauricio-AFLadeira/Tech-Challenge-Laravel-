@@ -20,14 +20,18 @@
             <hr />
         </div>
 
+        <h3>Insira seu user do Github</h3>
+
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input id="name" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
-        <input type="submit" id="send" class="btn btn-outline-success">
+        <!-- <button type="submit" id="user" class="btn btn-outline-success">teste</button> -->
+        <!-- <input type="submit" id="user" class="btn btn-outline-success"> -->
 
-        <a href="{{route('graph')}}">graph</a>
+        <a type="submit" id="user" class="btn btn-outline-success">See repositories</a>
+        <a href="{{route('graph')}}" class="btn btn-outline-success">Next</a>
 
         <ul></ul>
     </div>
