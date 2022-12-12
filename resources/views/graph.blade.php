@@ -36,9 +36,11 @@
                 <input id="sha" type="text" class="form-control" aria-label="Sizing example input">
             </div>
 
-            <input type="submit" id="send" class="btn btn-outline-success">
+            <!-- <input type="submit" id="send" class="btn btn-outline-success"> -->
+            <a type="submit" id="send" class="btn btn-outline-success">Generate chart</a>
         </form>
         <div id="result"></div>
+        <div id="test"></div>
 
         <div>
             <canvas id="myChart"></canvas>

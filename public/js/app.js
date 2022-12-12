@@ -9,20 +9,27 @@ btn.addEventListener("click", function (e) {
     let owner = document.querySelector("#owner").value
     let repo = document.querySelector("#repo").value
     let sha = document.querySelector("#sha").value
+    let result = document.querySelector("#result")
+    // let test = document.querySelector("#test")
 
     let count = get_all_commits_count('Mauricio-AFLadeira', 'Tech-Challenge-Laravel-', 'main')
     // let count = get_all_commits_count(owner, repo, sha)
 
+
     console.log('Commit Count: ', count);
     result.innerHTML = ("Commit count: " + count)
+    // test.innerHTML = (get_commits_count_by_period())
+
+    let xAxis = get_days_it_was_committed('Mauricio-AFLadeira', 'Tech-Challenge-Laravel-')
+    let yAxis = [1, 0, 4]
 
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['commits'],
+            labels: xAxis,
             datasets: [{
-                label: 'Commit count',
-                data: [count],
+                label: 'Commit per day',
+                data: yAxis,
                 borderWidth: 1
             }]
         },
@@ -34,6 +41,7 @@ btn.addEventListener("click", function (e) {
             }
         }
     });
+
 
 })
 
@@ -47,9 +55,47 @@ function httpGet(theUrl, return_headers) {
     return xmlHttp.responseText;
 }
 
+function get_commits_per_day(owner, repo) {
+    let url = base_url + '/repos/' + owner + '/' + repo + '/commits';
+    let req = httpGet(url);
+    let json = JSON.parse(req)
+    let days = get_days_it_was_committed(owner, repo)
+
+    for (let aux = 0; aux < json.length - 1; aux++) {
+
+        let day = new Date(json[aux].commit.author.date).toISOString().replace('-', '/').split('T')[0].replace('-', '/')
+        if (day === days[aux]) {
+            oldDay = day
+            days.push(day)
+            // debugger
+        }
+    }
+
+    return 1
+}
+
+function get_days_it_was_committed(owner, repo) {
+    let url = base_url + '/repos/' + owner + '/' + repo + '/commits';
+    let req = httpGet(url);
+    let json = JSON.parse(req)
+    let days = []
+    let oldDay = ''
+
+    for (let aux = 0; aux < json.length - 1; aux++) {
+
+        let day = new Date(json[aux].commit.author.date).toISOString().replace('-', '/').split('T')[0].replace('-', '/')
+        if (oldDay != day) {
+            oldDay = day
+            days.push(day)
+        }
+        // debugger
+    }
+    return days.reverse()
+}
+
 function get_all_commits_count(owner, repo, sha) {
-    let result = document.querySelector("#result")
     let first_commit = get_first_commit(owner, repo);
+
     let compare_url = base_url + '/repos/' + owner + '/' + repo + '/compare/' + first_commit + '...' + sha;
     let commit_req = httpGet(compare_url);
     let commit_count = JSON.parse(commit_req)['total_commits'] + 1;

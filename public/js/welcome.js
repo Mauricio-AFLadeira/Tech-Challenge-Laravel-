@@ -19,19 +19,20 @@ function getApiGitHub(userName) {
             }
 
             var data = await res.json()
+            let aux = 1
 
             data.map(item => {
                 let li = document.createElement('li')
 
                 li.innerHTML = `
-        <strong>${item.name.toUpperCase()}</strong>
+        <strong>${aux}- ${item.name.toUpperCase()}</strong>
         <span>URL: ${item.commits_url}</span>
-        <span>Sha: ${item.sha}</span>
         <span>Data Criação: 
           ${Intl.DateTimeFormat('pt-BR')
                         .format(new Date(item.created_at))}
         </span>
       `
+                aux++
                 ul.appendChild(li)
 
             })
