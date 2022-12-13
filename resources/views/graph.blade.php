@@ -7,8 +7,6 @@
 
     <title>Tech Challenge</title>
 
-    <!-- Fonts -->
-    <!-- <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -31,13 +29,9 @@
                 <input id="repo" type="text" class="form-control" aria-label="Sizing example input">
             </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Branch</span>
-                <input id="sha" type="text" class="form-control" aria-label="Sizing example input">
-            </div>
-
-            <!-- <input type="submit" id="send" class="btn btn-outline-success"> -->
             <a type="submit" id="send" class="btn btn-outline-success">Generate chart</a>
+            <a href="{{route('welcome')}}" class="btn btn-outline-danger">Previous</a>
+
         </form>
         <div id="result"></div>
         <div id="test"></div>
