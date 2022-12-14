@@ -1,6 +1,7 @@
 # :chart_with_downwards_trend: Tech-Challenge
 
 ## Technologies
+
     - [PHP](https://www.php.net)
     - [Laravel](https://laravel.com)
     - [MySql](https://www.mysql.com)
@@ -11,10 +12,8 @@
     
     Clone this repo:
 
-    ```
-    git clone https://github.com/Mauricio-AFLadeira/Tech-Challenge-Laravel-.git
-    ```
-
+    "git clone https://github.com/Mauricio-AFLadeira/Tech-Challenge-Laravel-.git"
+   
     In this path https://github.com/settings/developers:
 
         1- Select "OAuth App"
@@ -28,58 +27,27 @@
 
     *At the ```cmd```, type in order:
 
-    1)
+    1) cp .env.example .env   
+    2) composer install
+    3) php artisan key:generate
+    4) php artisan migrate
+    5) npm install    
 
-    ```
-    cp .env.example .env
-    ```
-
-    2)
-
-    ```
-    composer install
-    ```
-
-    3)
-
-    ```
-    php artisan key:generate
-    ```
-
-    4)
-
-    ```
-    php artisan migrate
-    ```
+    *At the .env:
     
-    5)
-
-    ```
-    npm install
-    ```
-
-    *At the ```.env```:
-
-    ```
     CLIENT_ID="keyClientID"
 
     CLIENT_SECRET="keyClientSecrect"
-    ```
+    
 
 ## Running
 
     1- Start XAMPP, turn on Apache and MySQL
 
-    2- Open the ```cmd```:
+    2- Open the cmd:
 
-    ```
-    npm run dev
-    ```
+        -npm run dev    
 
-    3- Open other ```cmd```:
+    3- Open other cmd:
 
-    ```
-    php artisan serve
-    ```
-
-### access (http://127.0.0.1:800)
+        -php artisan serve
